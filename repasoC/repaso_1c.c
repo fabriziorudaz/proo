@@ -1,3 +1,6 @@
+#include<stdio.h>
+
+
 int main (){
     float cp1, cp2, cp3, ef, tf;
 
