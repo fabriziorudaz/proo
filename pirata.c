@@ -67,7 +67,7 @@ int main(){
 		map[pc][pf]='*';
 		break;
 	};
-	case 'E':{
+	case 'O':{
 		pf-=1;
 		if(map[pc][pf]=='0'){
 		printf("Caiste al agua :(");
@@ -77,7 +77,7 @@ int main(){
 		map[pc][pf]='*';
 		break;
 	};
-	case 'O':{
+	case 'E':{
 		pf+=1;
 		if(map[pc][pf]=='0'){
 		printf("Caiste al agua :(");
