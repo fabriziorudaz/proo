@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 int isNumberRepeated(int sudoku[9][9], int row, int col, int randome) {
     //hace el recorrido de el arraid verificando cada lugar
     for (int i = 0; i < 9; i++) {
@@ -40,6 +41,24 @@ void generateSudoku(int sudoku[9][9]) {
         }
     } 
 
+    void printSudoku(int sudoku[9][9]) {
+    // Print top border
+    printf("  ");
+    for (int i = 0; i < 9; i++) {
+        printf("%d ", i + 1);
+    }
+    printf("\n");
+
+    // Print each row with a leading letter
+    for (int i = 0; i < 9; i++) {
+        printf("%c ", 'A' + i);
+        for (int j = 0; j < 9; j++) {
+            printf("%d ", sudoku[i][j]);
+        }
+        printf("\n");
+    }
+}
+
     // Colocar al menos un número en cada subcuadro 3x3
     // Se usa cada cuadro 3x3 por eso suma de 3 en 3
     for (int startRow = 0; startRow < 9; startRow += 3) {
@@ -70,8 +89,17 @@ void generateSudoku(int sudoku[9][9]) {
     }
 }
 
-void printSudoku(int sudoku[9][9]) {
+ void printSudoku(int sudoku[9][9]) {
+    // Print top border
+    printf("  ");
     for (int i = 0; i < 9; i++) {
+        printf("%d ", i + 1);
+    }
+    printf("\n");
+
+    // Print each row with a leading letter
+    for (int i = 0; i < 9; i++) {
+        printf("%c ", 'A' + i);
         for (int j = 0; j < 9; j++) {
             printf("%d ", sudoku[i][j]);
         }
