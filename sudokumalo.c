@@ -108,6 +108,10 @@ int playSudoku(int sudoku[9][9], int row, int col, int n) {
     // Coloca el número en la posición especificada
     sudoku[row][col] = n;
     return 1;
+    
+    if(sudoku != 0 && isNumberRepeated(sudoku, row, col, n) ){
+    	printf("GANASTEEEEE");
+	}
 }
 
 int main() {
