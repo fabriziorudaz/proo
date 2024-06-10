@@ -95,13 +95,20 @@ int playSudoku(int sudoku[9][9], int row, int col, int n) {
     
     // Verifica si la celda está vacía
     if (sudoku[row][col] != 0) {
-        printf("La celda ya está ocupada.\n");
+        printf("Cambio su numero .\n");
+        sudoku[row][col] = n;
         return 1;
     }
 
     // Verifica si el número es válido en esa posición
     if (isNumberRepeated(sudoku, row, col, n)) {
         printf("El número no es válido en esa posición.\n");
+        
+        
+        //hay que hacer otro color los numeros que esten mal
+        
+        
+        sudoku[row][col] = n;
         return 1;
     }
 
