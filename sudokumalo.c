@@ -1,9 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
+
+void setColor(int textColor, int bgColor) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), textColor | bgColor);
+}
+
 
 int isNumberRepeated(int sudoku[9][9], int row, int col, int randome) {
     // Hace el recorrido de el array verificando cada lugar
+     
     for (int i = 0; i < 9; i++) {
         // Se fija si en la fila o columna está repetido el número
         if (sudoku[row][i] == randome || sudoku[i][col] == randome) {
@@ -23,7 +30,7 @@ int isNumberRepeated(int sudoku[9][9], int row, int col, int randome) {
             }
         }
     }
-
+ 
     return 0; // El número no se repite
 }
 
@@ -106,11 +113,17 @@ int playSudoku(int sudoku[9][9], int row, int col, int n) {
         
         
         //hay que hacer otro color los numeros que esten mal
+          setColor(15, 200); 
+		sudoku[row][col] = n;
+        printf("%d ", sudoku[row][col]);
+        setColor(15, 0);
+        printf("\n");
         
+     
         
-        sudoku[row][col] = n;
         return 1;
     }
+    
 
     // Coloca el número en la posición especificada
     sudoku[row][col] = n;
@@ -127,7 +140,6 @@ int main() {
         printf("Menu sudoku\n");
         printf("1- Jugar sudoku\n");
         printf("2- Reglas sudoku\n");
-    
         scanf("%d", &elec);
         switch (elec) {
             case 1: {
@@ -139,14 +151,15 @@ int main() {
 				 while(1){ 
                 printf("Ingrese la fila (A-I), columna (1-9) y el número que desea colocar: ");
                 scanf(" %c%d %d", &row, &col, &n);
+                	system("cls");	
                 row -= 'A'; // Convertir la letra de fila a índice de matriz
                 col--; 
 				 // Ajustar el índice de columna de 0 a 8
                 playSudoku(sudoku, row, col, n);
                 printSudoku(sudoku);
-                break;
+				 getchar();
             }
-            
+        
         }
             case 2: {
                 printf("El Sudoku se juega en una cuadrícula de 9x9, dividida en 9 subcuadros de 3x3.\n"
@@ -165,6 +178,10 @@ int main() {
                 getchar(); // Esperar a que el usuario presione una tecla
                 break;
             }
+            default:{
+            	printf("opcion invalida down");
+				break;
+			}
         };
         system("cls");
     };
