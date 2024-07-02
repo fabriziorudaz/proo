@@ -75,21 +75,32 @@ void generateSudoku(int sudoku[9][9]) {
     }
 }
 
-void printSudoku(int sudoku[9][9]) {
-    // Print top border
+	void printSudoku(int sudoku[9][9]) {
+   
     printf("  ");
     for (int i = 0; i < 9; i++) {
         printf("%d ", i + 1);
+        if ((i + 1) % 3 == 0) {
+            printf("  "); // Extra space after every third number
+        }
     }
     printf("\n");
 
-    // Print each row with a leading letter
+   
     for (int i = 0; i < 9; i++) {
         printf("%c ", 'A' + i);
         for (int j = 0; j < 9; j++) {
             printf("%d ", sudoku[i][j]);
+            if ((j + 1) % 3 == 0 && j != 8) {
+                printf("| "); // Vertical line after every third number in a block
+            }
         }
         printf("\n");
+
+        if ((i + 1) % 3 == 0 && i != 8) {
+            // Print horizontal line after every third row
+            printf("  ------+-------+------\n");
+        }
     }
 }
 
@@ -186,3 +197,4 @@ int main() {
         system("cls");
     };
 }
+
